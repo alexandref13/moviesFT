@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:movies_flutter/config/router.dart';
 import 'package:movies_flutter/services/global_locator_service.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 
-void main() {
+Future<void> main() async {
+  await dotenv.load(fileName: ".env");
   globalSetupLocator();
+
   runApp(const MyApp());
 }
 
