@@ -26,10 +26,28 @@ class _HomeViewState extends State<HomeView> {
       appBar: AppBar(
         title: const Text("MoviesFT"),
       ),
-      body: const Column(
-        children: [
-          MovieTrendingItemWidget(),
-        ],
+      body: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 16),
+        child: Column(
+          children: [
+            ValueListenableBuilder(
+              valueListenable: homeViewModel.trendingMovies,
+              builder: (context, value, child) => Expanded(
+                child: ListView.builder(
+                  itemCount: value.length,
+                  scrollDirection: Axis.horizontal,
+                  itemBuilder: (context, index) {
+                    var movie = value[index];
+                    return MovieTrendingItemWidget(
+                      posterPath: movie.posterPath,
+                      title: movie.title,
+                    );
+                  },
+                ),
+              ),
+            )
+          ],
+        ),
       ),
     );
   }

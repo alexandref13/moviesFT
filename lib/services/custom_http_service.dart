@@ -10,6 +10,9 @@ class CustomHttpService {
         'content-type': 'application/json',
         "Authorization": "Bearer ${dotenv.env['API_KEY']}",
       },
+      queryParameters: {
+        "language": "pt-BR",
+      },
     ),
   );
 }

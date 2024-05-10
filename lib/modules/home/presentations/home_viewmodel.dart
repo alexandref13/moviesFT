@@ -1,4 +1,5 @@
 import 'package:flutter/foundation.dart';
+import 'package:movies_flutter/modules/home/models/movie_model.dart';
 import 'package:movies_flutter/modules/home/repositories/home_repository.dart';
 
 class HomeViewModel extends ChangeNotifier {
@@ -6,7 +7,11 @@ class HomeViewModel extends ChangeNotifier {
 
   HomeViewModel({required this.homeRepository});
 
+  ValueNotifier<List<MovieModel>> trendingMovies = ValueNotifier([]);
+
   Future<void> getTrendingMovies() async {
-    await homeRepository.getTrendingMovies();
+    trendingMovies.value = await homeRepository.getTrendingMovies();
+
+    notifyListeners();
   }
 }
