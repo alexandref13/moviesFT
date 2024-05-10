@@ -18,4 +18,17 @@ class HomeRepositoryImp implements HomeRepository {
 
     return movies;
   }
+
+  @override
+  Future<List<MovieModel>> getAllMovies() async {
+    final response = await customHttpService.dio.get(
+        "/discover/movie?include_adult=false&include_video=false&page=1&sort_by=popularity.desc");
+
+    final data = response.data['results'] as List<dynamic>;
+    List<MovieModel> movies = [];
+
+    movies = data.map((movie) => MovieModel.fromJson(movie)).toList();
+
+    return movies;
+  }
 }

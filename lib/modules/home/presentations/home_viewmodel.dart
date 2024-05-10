@@ -8,9 +8,16 @@ class HomeViewModel extends ChangeNotifier {
   HomeViewModel({required this.homeRepository});
 
   ValueNotifier<List<MovieModel>> trendingMovies = ValueNotifier([]);
+  ValueNotifier<List<MovieModel>> allMovies = ValueNotifier([]);
 
   Future<void> getTrendingMovies() async {
     trendingMovies.value = await homeRepository.getTrendingMovies();
+
+    notifyListeners();
+  }
+
+  Future<void> getAllMovies() async {
+    allMovies.value = await homeRepository.getAllMovies();
 
     notifyListeners();
   }
