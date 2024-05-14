@@ -3,6 +3,7 @@ import 'package:get_it/get_it.dart';
 import 'package:go_router/go_router.dart';
 import 'package:movies_flutter/modules/details/presentations/details_state.dart';
 import 'package:movies_flutter/modules/details/presentations/details_viewmodel.dart';
+import 'package:movies_flutter/theme/typograph.dart';
 
 class DetailsView extends StatefulWidget {
   final String? id;
@@ -31,6 +32,8 @@ class _DetailsViewState extends State<DetailsView> {
       valueListenable: detailsMovieViewModel,
       builder: (context, value, child) {
         if (value is SuccessDetailsMovieState) {
+          final movie = value.movie;
+
           return Scaffold(
             appBar: AppBar(
               title: Text(value.movie.title),
@@ -40,8 +43,40 @@ class _DetailsViewState extends State<DetailsView> {
                 },
               ),
             ),
-            body: Center(
-              child: Text(widget.id ?? ""),
+            body: SingleChildScrollView(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  ClipRRect(
+                    borderRadius: const BorderRadius.only(
+                      bottomLeft: Radius.circular(8),
+                      bottomRight: Radius.circular(8),
+                    ),
+                    child: Image.network(
+                      'https://image.tmdb.org/t/p/w500/${movie.posterPath}',
+                      height: MediaQuery.of(context).size.height * .6,
+                      fit: BoxFit.fill,
+                    ),
+                  ),
+                  const SizedBox(height: 8),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 16),
+                    child: Text(
+                      movie.title,
+                      style: customTextStyle(CustomTextStyleEnum.titleMedium),
+                    ),
+                  ),
+                  const SizedBox(height: 8),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 16),
+                    child: Text(
+                      movie.overview,
+                      style: customTextStyle(CustomTextStyleEnum.bodyMedium),
+                    ),
+                  ),
+                  const SizedBox(height: 32),
+                ],
+              ),
             ),
           );
         }
