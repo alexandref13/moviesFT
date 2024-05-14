@@ -25,13 +25,13 @@ class MovieTrendingItemWidget extends StatelessWidget {
             borderRadius: BorderRadius.circular(8),
             child: Image.network(
               'https://image.tmdb.org/t/p/w500/$posterPath',
-              width: width * .5,
+              width: width * .8,
               height: height * .6,
               fit: BoxFit.fill,
             ),
           ),
           SizedBox(
-            width: width * .5,
+            width: width * .7,
             child: Text(
               title,
               maxLines: 1,

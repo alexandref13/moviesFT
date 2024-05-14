@@ -25,7 +25,7 @@ class MovieGeneralItemWidget extends StatelessWidget {
             borderRadius: BorderRadius.circular(8),
             child: Image.network(
               'https://image.tmdb.org/t/p/w500/$posterPath',
-              width: width * .85,
+              width: width * .8,
               height: height * .3,
               fit: BoxFit.fill,
             ),
