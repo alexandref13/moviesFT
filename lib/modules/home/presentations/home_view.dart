@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
+import 'package:go_router/go_router.dart';
 import 'package:movies_flutter/modules/home/presentations/all_movies_state.dart';
 import 'package:movies_flutter/modules/home/presentations/all_movies_viewmodel.dart';
 import 'package:movies_flutter/modules/home/presentations/trending_movies_state.dart';
@@ -59,9 +60,14 @@ class _HomeViewState extends State<HomeView> {
                         scrollDirection: Axis.horizontal,
                         itemBuilder: (context, index) {
                           var movie = value.trendingMovies[index];
-                          return MovieTrendingItemWidget(
-                            posterPath: movie.posterPath,
-                            title: movie.title,
+                          return InkWell(
+                            onTap: () {
+                              context.go("/details/${movie.id}");
+                            },
+                            child: MovieTrendingItemWidget(
+                              posterPath: movie.posterPath,
+                              title: movie.title,
+                            ),
                           );
                         },
                       ),
@@ -101,9 +107,14 @@ class _HomeViewState extends State<HomeView> {
                         scrollDirection: Axis.horizontal,
                         itemBuilder: (context, index) {
                           var movie = value.allMovies[index];
-                          return MovieGeneralItemWidget(
-                            posterPath: movie.posterPath,
-                            title: movie.title,
+                          return InkWell(
+                            onTap: () {
+                              context.go("/details/${movie.id}");
+                            },
+                            child: MovieGeneralItemWidget(
+                              posterPath: movie.posterPath,
+                              title: movie.title,
+                            ),
                           );
                         },
                       ),
