@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
-import 'package:movies_flutter/core/typograph.dart';
+import 'package:movies_flutter/theme/typograph.dart';
 
 class MovieTrendingItemWidget extends StatelessWidget {
   final String posterPath;

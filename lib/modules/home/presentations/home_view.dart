@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
-import 'package:movies_flutter/core/typograph.dart';
+import 'package:movies_flutter/theme/typograph.dart';
 import 'package:movies_flutter/modules/home/presentations/home_viewmodel.dart';
 
 import 'widgets/widgets.dart';

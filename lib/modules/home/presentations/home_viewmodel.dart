@@ -1,5 +1,5 @@
 import 'package:flutter/foundation.dart';
-import 'package:movies_flutter/modules/home/models/movie_model.dart';
+import 'package:movies_flutter/core/models/movie_model.dart';
 import 'package:movies_flutter/modules/home/repositories/home_repository.dart';
 
 class HomeViewModel extends ChangeNotifier {

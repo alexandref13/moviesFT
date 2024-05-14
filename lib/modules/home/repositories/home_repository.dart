@@ -1,4 +1,4 @@
-import 'package:movies_flutter/modules/home/models/movie_model.dart';
+import 'package:movies_flutter/core/models/movie_model.dart';
 
 abstract class HomeRepository {
   Future<List<MovieModel>> getTrendingMovies();
